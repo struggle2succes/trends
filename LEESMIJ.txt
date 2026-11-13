@@ -1,0 +1,43 @@
+TENDORA WEBSHOP - 35 PRODUCTEN MET FOTOGALERIJEN
+
+Upload index.html en de volledige map images naar dezelfde hoofdmap van je GitHub Pages repository.
+De bestaande productnamen en affiliate-links zijn behouden. Klik op een kleine foto om die te tonen; klik op de grote foto om door de foto's te bladeren.
+
+Aantal foto's per product:
+Product 1: 5 foto's
+Product 2: 6 foto's
+Product 3: 6 foto's
+Product 4: 6 foto's
+Product 5: 6 foto's
+Product 6: 6 foto's
+Product 7: 6 foto's
+Product 8: 6 foto's
+Product 9: 6 foto's
+Product 10: 6 foto's
+Product 11: 6 foto's
+Product 12: 6 foto's
+Product 13: 6 foto's
+Product 14: 6 foto's
+Product 15: 6 foto's
+Product 16: 6 foto's
+Product 17: 6 foto's
+Product 18: 6 foto's
+Product 19: 6 foto's
+Product 20: 6 foto's
+Product 21: 6 foto's
+Product 22: 6 foto's
+Product 23: 6 foto's
+Product 24: 6 foto's
+Product 25: 8 foto's
+Product 26: 6 foto's
+Product 27: 6 foto's
+Product 28: 6 foto's
+Product 29: 6 foto's
+Product 30: 6 foto's
+Product 31: 6 foto's
+Product 32: 6 foto's
+Product 33: 6 foto's
+Product 34: 6 foto's
+Product 35: 6 foto's
+
+Totaal: 211 foto's voor 35 producten.
