@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tendora — Curated Everyday Upgrades & Smart Finds</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #f4f7f6;
+            --bg-surface: #ffffff;
+            --bg-subtle: #eef3f1;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --brand-emerald: #059669;
+            --brand-emerald-dark: #047857;
+            --brand-emerald-soft: #d1fae5;
+            --brand-teal: #0d9488;
+            --border-light: #e2e8f0;
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+            --shadow-hover: 0 14px 28px -6px rgba(5, 150, 105, 0.14), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.65rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--brand-emerald), var(--brand-teal));
+            display: inline-block;
+        }
+
+        .nav-pill {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--brand-emerald-dark);
+            background: var(--brand-emerald-soft);
+            padding: 0.45rem 1rem;
+            border-radius: 999px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: radial-gradient(circle at top right, #d1fae5 0%, #ffffff 45%, #f4f7f6 100%);
+            border-bottom: 1px solid var(--border-light);
+            padding: 4rem 1.5rem 3.5rem;
+            text-align: center;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--brand-emerald-dark);
+            background: #ffffff;
+            border: 1px solid #a7f3d0;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            margin-bottom: 1.1rem;
+            box-shadow: 0 2px 8px rgba(5, 150, 105, 0.08);
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            max-width: 760px;
+            margin: 0 auto 1rem;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            color: var(--text-primary);
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--brand-emerald), var(--brand-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            max-width: 620px;
+            margin: 0 auto;
+            font-size: 1.08rem;
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1240px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Controls Bar */
+        .controls-wrapper {
+            background: var(--bg-surface);
+            padding: 1.1rem 1.25rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-card);
+            margin-bottom: 2.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-btn {
+            background: var(--bg-subtle);
+            border: 1px solid transparent;
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            background: #e2ece8;
+            color: var(--text-primary);
+        }
+
+        .filter-btn.active {
+            background: var(--brand-emerald);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 290px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 0.65rem 1rem 0.65rem 2.4rem;
+            border: 1px solid var(--border-light);
+            border-radius: 999px;
+            font-size: 0.92rem;
+            background: var(--bg-page);
+            color: var(--text-primary);
+            outline: none;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .search-box:focus {
+            border-color: var(--brand-emerald);
+            background: #ffffff;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            pointer-events: none;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .product-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: #a7f3d0;
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            overflow: hidden;
+        }
+
+        .image-wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.35s ease;
+        }
+
+        .product-card:hover .image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        /* Multi-image switcher dots */
+        .gallery-dots {
+            position: absolute;
+            bottom: 0.65rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.4rem;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.3rem 0.6rem;
+            border-radius: 999px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+
+        .gallery-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: none;
+            background: #cbd5e1;
+            cursor: pointer;
+            padding: 0;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .gallery-dot.active {
+            background: var(--brand-emerald);
+            transform: scale(1.25);
+        }
+
+        .product-content {
+            padding: 1.35rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-category {
+            display: inline-block;
+            align-self: flex-start;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--brand-emerald-dark);
+            background: var(--brand-emerald-soft);
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            font-weight: 700;
+            margin-bottom: 0.65rem;
+        }
+
+        .product-title {
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.55rem;
+            line-height: 1.35;
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            line-height: 1.55;
+        }
+
+        .cta-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            width: 100%;
+            background: linear-gradient(135deg, var(--brand-emerald), var(--brand-teal));
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 0.92rem;
+            transition: opacity 0.2s ease, transform 0.15s ease;
+        }
+
+        .cta-button:hover {
+            opacity: 0.92;
+            transform: translateY(-1px);
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3.5rem 1.5rem;
+            background: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            border: 1px dashed var(--border-light);
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-surface);
+            border-top: 1px solid var(--border-light);
+            margin-top: 4.5rem;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-content {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .disclaimer {
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.95rem; }
+            .search-wrapper { max-width: 100%; }
+            .controls-wrapper { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Tendora<span class="logo-dot"></span></a>
+            <span class="nav-pill" id="product-count">35 Curated Picks</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-tag">Handpicked Quality &bull; Smart Value</div>
+        <h1>Discover Everyday Upgrades &amp; <span>Trending Finds</span></h1>
+        <p>Explore our curated catalog of top-rated tech, home essentials, coffee gear, and outdoor accessories. Click any item to check live availability and current offers.</p>
+    </section>
+
+    <main>
+        <div class="controls-wrapper">
+            <div class="filter-buttons" id="category-filters"></div>
+            <div class="search-wrapper">
+                <span class="search-icon">&#128269;</span>
+                <input type="text" id="search-input" class="search-box" placeholder="Search products...">
+            </div>
+        </div>
+
+        <div class="product-grid" id="product-grid"></div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">Tendora.</div>
+            <p class="disclaimer">
+                <strong>Affiliate Disclosure:</strong> Tendora features curated product recommendations with affiliate links. If you click through and make a purchase on a partner store, we may earn a small commission at no additional cost to you. Live pricing and availability are displayed directly on the seller's page.
+            </p>
+            <p>&copy; <span id="year"></span> Tendora. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const products = [
+    {
+        "id": 1,
+        "name": "vSeeBox V6 Plus 64GB 8K HD Smart TV Box",
+        "category": "Electronics & Gaming",
+        "description": "Experience ultra-crisp 8K Ultra HD streaming with 64GB storage and hands-free voice control for seamless home entertainment.",
+        "images": [
+            "fotos1/product-1/1.jpg",
+            "fotos1/product-1/3.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3r9NySL"
+    },
+    {
+        "id": 2,
+        "name": "AYN Thor Dual-Screen AMOLED Handheld Console",
+        "category": "Electronics & Gaming",
+        "description": "Sleek clamshell Android gaming handheld featuring vibrant dual 6-inch 1080p AMOLED displays for portable console-level play.",
+        "images": [
+            "fotos1/product-2/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c2y2my07"
+    },
+    {
+        "id": 3,
+        "name": "FLASHFORGE AD5X Multi-Color 3D Printer",
+        "category": "Tools & Energy",
+        "description": "High-speed multi-color 3D printing with an intelligent filament system, one-click auto leveling, and smart group control.",
+        "images": [
+            "fotos1/product-3/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c4BrRQu7"
+    },
+    {
+        "id": 4,
+        "name": "Sumry 4KW 120V Off-Grid Pure Sine Wave Solar Inverter",
+        "category": "Tools & Energy",
+        "description": "Reliable 24V off-grid power solution featuring a built-in 140A MPPT solar charger, 5600W PV input, and clear 6.25-inch LCD display.",
+        "images": [
+            "fotos1/product-4/1.jpg",
+            "fotos1/product-4/2.jpg",
+            "fotos1/product-4/6.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c4qcwhgJ"
+    },
+    {
+        "id": 5,
+        "name": "Precision Phone Port & Earbud Cleaning Kit",
+        "category": "Phone & Auto",
+        "description": "Complete micro-brush and dust plug set designed to safely clear lint and debris from charging ports, speakers, and earphones.",
+        "images": [
+            "fotos1/product-5/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3P5JW7p"
+    },
+    {
+        "id": 6,
+        "name": "Men's Polarized Sports & Night Vision Sunglasses",
+        "category": "Sports & Outdoor",
+        "description": "Lightweight wraparound polarized frames built to reduce glare during cycling, driving, fishing, and outdoor adventures.",
+        "images": [
+            "fotos1/product-6/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3wugn2j"
+    },
+    {
+        "id": 7,
+        "name": "240W Braided USB-C Fast Charging Cable with LED Display",
+        "category": "Phone & Auto",
+        "description": "Heavy-duty nylon USB Type-C cable delivering up to 240W super-fast charging with a real-time digital wattage readout.",
+        "images": [
+            "fotos1/product-7/1.jpg",
+            "fotos1/product-7/6.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3UOvdL5"
+    },
+    {
+        "id": 8,
+        "name": "350W Multi-Port PD & QC3.0 Fast Car Charger",
+        "category": "Phone & Auto",
+        "description": "High-output USB-C and USB-A vehicle adapter engineered to rapidly power multiple smartphones, tablets, and accessories on the road.",
+        "images": [
+            "fotos1/product-8/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3Rwxv4X"
+    },
+    {
+        "id": 9,
+        "name": "GameSir G7 Pro Xbox & PC Gaming Controller",
+        "category": "Electronics & Gaming",
+        "description": "Pro-grade wired/wireless controller equipped with drift-free TMR sticks, Hall Effect triggers, gyro controls, and a smart charging dock.",
+        "images": [
+            "fotos1/product-9/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3ptojND"
+    },
+    {
+        "id": 10,
+        "name": "T9 Vintage Cordless Hair Clipper & Trimmer Kit",
+        "category": "Personal Care",
+        "description": "Precision stainless-steel T-blade groomer with rechargeable battery and nose trimmer attachment for clean fades and beard detailing.",
+        "images": [
+            "fotos1/product-10/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c2ySjsmP"
+    },
+    {
+        "id": 11,
+        "name": "Foldable Adjustable Aluminum Desk Phone Stand",
+        "category": "Phone & Auto",
+        "description": "Portable, ergonomic desktop holder with multi-angle tilt adjustment for comfortable video calls, streaming, and hands-free viewing.",
+        "images": [
+            "fotos8/product-11/1.jpg",
+            "fotos8/product-11/2.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c2xxwWjv"
+    },
+    {
+        "id": 12,
+        "name": "Ultra-Thick Lint-Free Microfiber Cleaning Cloths",
+        "category": "Home & Lifestyle",
+        "description": "Plush, high-absorbency microfiber towels ideal for streak-free car detailing, glass polishing, and everyday household cleaning.",
+        "images": [
+            "fotos8/product-12/1.jpg",
+            "fotos8/product-12/5.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c4rfw9iL"
+    },
+    {
+        "id": 13,
+        "name": "2-in-1 High-Speed USB 3.0 SD & MicroSD Card Reader",
+        "category": "Electronics & Gaming",
+        "description": "Compact plug-and-play adapter supporting simultaneous TF and SD memory card transfers at fast USB 3.0 speeds.",
+        "images": [
+            "fotos8/product-13/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c4oi5iAB"
+    },
+    {
+        "id": 14,
+        "name": "Netac NV3000 NVMe M.2 PCIe 3.0 Internal SSD",
+        "category": "Electronics & Gaming",
+        "description": "Upgrade your laptop or desktop speed with read performance up to 3500MB/s in a slim M.2 2280 form factor.",
+        "images": [
+            "fotos9/product-14/1.jpg",
+            "fotos9/product-14/3.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c4n5OtDt"
+    },
+    {
+        "id": 15,
+        "name": "DAREVIE Seamless 2.0 Pro Men's Cycling Bib Shorts",
+        "category": "Sports & Outdoor",
+        "description": "Endurance-grade 4-way stretch cycling bibs engineered with high-density padding for comfortable 6-hour rides.",
+        "images": [
+            "fotos9/product-15/1.jpg",
+            "fotos9/product-15/2.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3olgPoR"
+    },
+    {
+        "id": 16,
+        "name": "Universal Car Air Vent Gravity Phone Mount",
+        "category": "Phone & Auto",
+        "description": "Secure, non-slip air vent clip mount that keeps 4.7 to 6.7-inch smartphones steady for effortless GPS navigation.",
+        "images": [
+            "fotos7/product-16/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c4nf1jmj"
+    },
+    {
+        "id": 17,
+        "name": "Long-Handle Silicone Bottle & Glassware Scrubber",
+        "category": "Kitchen & Coffee",
+        "description": "Hygienic, scratch-free silicone bristle brush designed to reach deep into tumblers, baby bottles, and tall glassware.",
+        "images": [
+            "fotos7/product-17/1.jpg",
+            "fotos7/product-17/6.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3kLjpYP"
+    },
+    {
+        "id": 18,
+        "name": "KZ ZAR Hybrid 1DD + 7BA HiFi In-Ear Monitors",
+        "category": "Electronics & Gaming",
+        "description": "Audiophile-grade wired earphones combining dynamic bass with seven balanced armatures for crystal-clear music and gaming audio.",
+        "images": [
+            "fotos7/product-18/1.jpg",
+            "fotos7/product-18/2.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c39kpCN9"
+    },
+    {
+        "id": 19,
+        "name": "DEWALT DCD887 Cordless Brushless Impact Drill",
+        "category": "Tools & Energy",
+        "description": "Heavy-duty wireless brushless screwdriver and drill built for high torque, precision fastening, and demanding DIY projects.",
+        "images": [
+            "fotos7/product-19/1.jpg",
+            "fotos7/product-19/2.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c2v7MqtH"
+    },
+    {
+        "id": 20,
+        "name": "Automatic Food Vacuum Sealer with Built-In Cutter",
+        "category": "Kitchen & Coffee",
+        "description": "Preserve freshness up to 5x longer with one-touch dry/moist sealing modes and an integrated bag cutter for custom sizing.",
+        "images": [
+            "fotos7/product-20/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3uxKEcF"
+    },
+    {
+        "id": 21,
+        "name": "900ML Precision Electric Gooseneck Kettle",
+        "category": "Kitchen & Coffee",
+        "description": "Smart temperature-controlled pour-over kettle with rapid heating and a steady gooseneck spout for barista-level coffee and tea.",
+        "images": [
+            "fotos3/product-21/1.jpg",
+            "fotos3/product-21/3.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3H0LZVZ"
+    },
+    {
+        "id": 22,
+        "name": "12000mAh Rechargeable Camping Ceiling Fan & LED Light",
+        "category": "Sports & Outdoor",
+        "description": "Versatile hanging tent fan with remote control, long-lasting battery, and integrated LED lantern for cool, well-lit outdoor nights.",
+        "images": [
+            "fotos3/product-22/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3p3T1kX"
+    },
+    {
+        "id": 23,
+        "name": "100-Speed Turbo Handheld Mini Fan with LED Display",
+        "category": "Home & Lifestyle",
+        "description": "Pocket-sized rechargeable cooling fan featuring stepless 100-level wind adjustment and a clear digital battery indicator.",
+        "images": [
+            "fotos3/product-23/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3IS9fQ3"
+    },
+    {
+        "id": 24,
+        "name": "DENOKIN 3-in-1 Portable Travel Espresso Maker",
+        "category": "Kitchen & Coffee",
+        "description": "Compact electric espresso machine with digital display compatible with ground coffee and capsules for car, office, or camping.",
+        "images": [
+            "fotos3/product-24/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3YiJQ3p"
+    },
+    {
+        "id": 25,
+        "name": "2500W High-Temperature Handheld Steam Cleaner",
+        "category": "Home & Lifestyle",
+        "description": "Chemical-free pressurized steam cleaner with multiple nozzles to sanitize kitchens, bathrooms, upholstery, and car interiors.",
+        "images": [
+            "fotos3/product-25/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3ZBvbn5"
+    },
+    {
+        "id": 26,
+        "name": "Wancle Electric Conical Burr Coffee Grinder",
+        "category": "Kitchen & Coffee",
+        "description": "28-setting precision burr mill delivering uniform grounds from fine espresso to coarse French press while preserving bean aroma.",
+        "images": [
+            "fotos3/product-26/4.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3ouQG4j"
+    },
+    {
+        "id": 27,
+        "name": "HiBREW H10B 20-Bar Semi-Automatic Espresso Machine",
+        "category": "Kitchen & Coffee",
+        "description": "Ultra-slim stainless espresso maker with adjustable brew temperature, cold/hot extraction, and powerful steam wand.",
+        "images": [
+            "fotos3/product-27/5.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3iHBP8f"
+    },
+    {
+        "id": 28,
+        "name": "Xiaomi MIJIA Electric Toothbrush Pro",
+        "category": "Personal Care",
+        "description": "Smart oscillating toothbrush with pressure sensor, IPX8 waterproofing, 4 brushing modes, and up to 180 days of battery life.",
+        "images": [
+            "fotos3/product-28/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3dajHVv"
+    },
+    {
+        "id": 29,
+        "name": "Women's High-Waist Seamless Fitness & Yoga Shorts",
+        "category": "Sports & Outdoor",
+        "description": "Sculpting, breathable activewear shorts designed for unrestricted movement during gym workouts, cycling, and yoga sessions.",
+        "images": [
+            "fotos3/product-29/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3BSOK6B"
+    },
+    {
+        "id": 30,
+        "name": "Li-Ning RED HARE 9 Men's Racing Running Shoes",
+        "category": "Sports & Outdoor",
+        "description": "Featherlight training sneakers powered by LIGHT FOAM ULTRA cushioning and breathable mesh for responsive daily runs.",
+        "images": [
+            "fotos4/product-30/2.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3XZeTAx"
+    },
+    {
+        "id": 31,
+        "name": "Women's Quick-Dry Loose-Fit Running Shorts",
+        "category": "Sports & Outdoor",
+        "description": "Airy, moisture-wicking summer athletic shorts with an elastic waistband for effortless comfort while jogging or lounging.",
+        "images": [
+            "fotos4/product-31/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3Rdq5wF"
+    },
+    {
+        "id": 32,
+        "name": "2-in-1 Mini Rechargeable Heat Bag Sealer & Cutter",
+        "category": "Kitchen & Coffee",
+        "description": "Handy magnetic kitchen gadget that instantly reseals snack bags airtight and opens packages cleanly with a concealed blade.",
+        "images": [
+            "fotos4/product-32/2.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3IUuM6n"
+    },
+    {
+        "id": 33,
+        "name": "AYN Thor Dual-Screen AMOLED Handheld (Edition II)",
+        "category": "Electronics & Gaming",
+        "description": "Dual-display clamshell Android entertainment console built for smooth multitasking, retro emulation, and cloud gaming.",
+        "images": [
+            "fotos4/product-33/4.jpg",
+            "fotos4/product-33/5.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3K86mKr"
+    },
+    {
+        "id": 34,
+        "name": "Sumry 4KW Off-Grid Solar Inverter & MPPT Controller",
+        "category": "Tools & Energy",
+        "description": "High-efficiency 120V pure sine wave inverter with 140A MPPT solar charging to keep essential home appliances running smoothly.",
+        "images": [
+            "fotos4/product-34/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3ETAJhp"
+    },
+    {
+        "id": 35,
+        "name": "350W Rapid USB-C & QC3.0 Car Charger Adapter",
+        "category": "Phone & Auto",
+        "description": "Compact multi-device fast car charger compatible with iPhone, Samsung, Xiaomi, and Huawei for reliable power on every trip.",
+        "images": [
+            "fotos4/product-35/1.jpg"
+        ],
+        "link": "https://s.click.aliexpress.com/e/_c3eHFNMr"
+    }
+];
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+        document.getElementById('product-count').textContent = `${products.length} Curated Picks`;
+
+        const grid = document.getElementById('product-grid');
+        const filterContainer = document.getElementById('category-filters');
+        const searchInput = document.getElementById('search-input');
+
+        let activeCategory = 'All';
+        let searchQuery = '';
+
+        // Build category pills dynamically
+        const categories = ['All', ...new Set(products.map(p => p.category))];
+        filterContainer.innerHTML = categories.map(cat => `
+            <button class="filter-btn ${cat === 'All' ? 'active' : ''}" data-category="${cat}">${cat}</button>
+        `).join('');
+
+        filterContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('filter-btn')) {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                activeCategory = e.target.dataset.category;
+                renderProducts();
+            }
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value.toLowerCase().trim();
+            renderProducts();
+        });
+
+        window.switchImage = function(productId, imgIndex, dotElement) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            const imgEl = document.getElementById(`img-${productId}`);
+            if (imgEl) {
+                imgEl.src = product.images[imgIndex];
+            }
+            const parent = dotElement.parentElement;
+            parent.querySelectorAll('.gallery-dot').forEach(d => d.classList.remove('active'));
+            dotElement.classList.add('active');
+        };
+
+        function renderProducts() {
+            const filtered = products.filter(product => {
+                const matchesCategory = activeCategory === 'All' || product.category === activeCategory;
+                const matchesSearch = product.name.toLowerCase().includes(searchQuery) ||
+                                      product.description.toLowerCase().includes(searchQuery) ||
+                                      product.category.toLowerCase().includes(searchQuery);
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No matching products found</h3>
+                        <p>Try clearing your search term or selecting a different category.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(product => {
+                const hasMultipleImages = product.images.length > 1;
+                const dotsHtml = hasMultipleImages ? `
+                    <div class="gallery-dots" aria-label="Product image switcher">
+                        ${product.images.map((_, idx) => `
+                            <button type="button" class="gallery-dot ${idx === 0 ? 'active' : ''}" 
+                                onclick="switchImage(${product.id}, ${idx}, this)" 
+                                aria-label="View image ${idx + 1}"></button>
+                        `).join('')}
+                    </div>
+                ` : '';
+
+                return `
+                    <article class="product-card">
+                        <div class="image-wrapper">
+                            <img id="img-${product.id}" src="${product.images[0]}" alt="${product.name}" loading="lazy">
+                            ${dotsHtml}
+                        </div>
+                        <div class="product-content">
+                            <span class="product-category">${product.category}</span>
+                            <h2 class="product-title">${product.name}</h2>
+                            <p class="product-desc">${product.description}</p>
+                            <a href="${product.link}" target="_blank" rel="nofollow sponsored noopener noreferrer" class="cta-button">
+                                Check Current Deal <span>&rarr;</span>
+                            </a>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        renderProducts();
+    </script>
+</body>
+</html>
